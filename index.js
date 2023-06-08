@@ -41,4 +41,22 @@ const loadQuestions = () =>{
 }
 
 
+
 loadQuestions()
+
+
+const submitQues = () => {
+    const ans = getanswer()
+    
+}
+
+const getanswer = () => {
+    inputs.forEach(
+        (input) => {
+            if(input.checked){
+                console.log(input.value)
+            }
+        }
+    )
+}
+
