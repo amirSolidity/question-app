@@ -21,7 +21,7 @@ const questions = [
         'b': 'BNB',
         'c': 'bitcoin',
         'd': 'tether',
-        'correct': 'bitcoin'
+        'correct': 'c'
     },
 ]
 const container1 = document.getElementById('container1')
@@ -43,18 +43,32 @@ const loadQuestions = () =>{
 
 
 loadQuestions()
-
+ 
 
 const submitQues = () => {
     const ans = getanswer()
-    
+    console.log('finished')
 }
 
 const getanswer = () => {
     inputs.forEach(
         (input) => {
-            if(input.checked){
-                console.log(input.value)
+            for(let i = 0; i < questions.length ; i += 1){
+                if(input.checked){
+                    let inputAn = input.value
+                    // if(inputAn == questions[2].correct){
+                    //     console.log('finished')
+                    // }else{
+                    //     console.log('nonono')
+                    // }
+                    if(inputAn == questions[index].correct){
+                        index += 1
+                        loadQuestions()
+                    }else{
+                        
+                    }
+                    
+                }
             }
         }
     )
