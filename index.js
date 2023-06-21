@@ -16,7 +16,7 @@ const questions = [
         'correct': 'b'
     },
     {
-        'que': 'what does css stands for?',
+        'que': 'Which is the most valuable digital currency currently?',
         'a': 'ethereum',
         'b': 'BNB',
         'c': 'bitcoin',
@@ -24,53 +24,53 @@ const questions = [
         'correct': 'c'
     },
 ]
-const container1 = document.getElementById('container1')
-const question = document.getElementById('question')
-const inputs = document.querySelectorAll('.inputs')
-let index = 0;
 
-const loadQuestions = () =>{
-    const section = questions[index]
-    console.log(section)    
-    question.innerText = ` ${index+1}) ${section.que}`
-    inputs[0].previousElementSibling.innerHTML = section.a;
-    inputs[1].previousElementSibling.innerText = section.b;
-    inputs[2].previousElementSibling.innerText = section.c;
-    inputs[3].previousElementSibling.innerText = section.d;
-    container1.style.height = '550px'
+let question = document.getElementById('question')
+let inputs = document.querySelectorAll('.inputs')
+
+let index = 0
+let num1 = 0
+
+question.innerHTML = questions[index].que
+inputs[0].previousElementSibling.innerHTML = questions[index].a
+inputs[1].previousElementSibling.innerHTML = questions[index].b
+inputs[2].previousElementSibling.innerHTML = questions[index].c
+inputs[3].previousElementSibling.innerHTML = questions[index].d
+
+const submitQues = ()=>{
+    rending()
+        for(index = 1;index>=questions.length+1;index++){
+            rending()
+        }
+    console.log(num1)
+
 }
 
 
-
-loadQuestions()
- 
-
-const submitQues = () => {
-    const ans = getanswer()
-    console.log('finished')
-}
-
-const getanswer = () => {
+const rending = ()=>{
+    let question = document.getElementById('question')
+    let inputs = document.querySelectorAll('.inputs')
     inputs.forEach(
-        (input) => {
-            for(let i = 0; i < questions.length ; i += 1){
-                if(input.checked){
-                    let inputAn = input.value
-                    // if(inputAn == questions[2].correct){
-                    //     console.log('finished')
-                    // }else{
-                    //     console.log('nonono')
-                    // }
-                    if(inputAn == questions[index].correct){
-                        index += 1
-                        loadQuestions()
-                    }else{
-                        
-                    }
+        (event)=>{
+            if(event.checked){
+                if(event.value == questions[index].correct){
+                    index += 1
+                    num1 +=1
+                    question.innerHTML = questions[index].que
+                    inputs[0].previousElementSibling.innerHTML = questions[index].a
+                    inputs[1].previousElementSibling.innerHTML = questions[index].b
+                    inputs[2].previousElementSibling.innerHTML = questions[index].c
+                    inputs[3].previousElementSibling.innerHTML = questions[index].d
                     
+                }else{
+                    index += 1
+                    question.innerHTML = questions[index].que
+                    inputs[0].previousElementSibling.innerHTML = questions[index].a
+                    inputs[1].previousElementSibling.innerHTML = questions[index].b
+                    inputs[2].previousElementSibling.innerHTML = questions[index].c
+                    inputs[3].previousElementSibling.innerHTML = questions[index].d
                 }
             }
         }
     )
 }
-
